@@ -40,5 +40,21 @@ class TodoList
         if item.desc is description
           @items.splice i, 1
 
-#  markItemAsDone: () ->
-    # TODO: finish this function
+  markItemAsDone: (description) ->
+    if description?
+      @items.forEach (item, i) ->
+        if item.desc is description
+          item.markAsDone true
+
+  toHTML: () ->
+    itemList = ("#{item.toHTML()}" for item in @items).join("")
+    "<div class='to-do-list'><h2>#{@category}</h2><ul>#{itemList}</ul></div>"
+
+
+chores = new TodoList "chores"
+chores.addItem "clean kitchen"
+chores.addItem "vacuum carpet"
+chores.addItem "empty fridge"
+
+todoUL = document.querySelector ".todos"
+todoUL.innerHTML = chores.toHTML()

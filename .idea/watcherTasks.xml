@@ -15,7 +15,7 @@
       </option>
       <option name="outputFromStdout" value="false" />
       <option name="passParentEnvs" value="true" />
-      <option name="program" value="$USER_HOME$/AppData/Roaming/npm/coffee.cmd" />
+      <option name="program" value="/usr/local/bin/coffee" />
       <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="true" />
       <option name="workingDir" value="$FileDir$" />
@@ -35,7 +35,7 @@
       </option>
       <option name="outputFromStdout" value="false" />
       <option name="passParentEnvs" value="true" />
-      <option name="program" value="$USER_HOME$/AppData/Roaming/npm/jade.cmd" />
+      <option name="program" value="/usr/local/bin/jade" />
       <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="true" />
       <option name="workingDir" value="$FileDir$" />
@@ -55,7 +55,7 @@
       </option>
       <option name="outputFromStdout" value="false" />
       <option name="passParentEnvs" value="true" />
-      <option name="program" value="$USER_HOME$/AppData/Roaming/npm/stylus.cmd" />
+      <option name="program" value="/usr/local/bin/stylus" />
       <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="true" />
       <option name="workingDir" value="$FileDir$" />
