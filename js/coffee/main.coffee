@@ -51,6 +51,14 @@ class TodoList
     "<div class='to-do-list'><h2>#{@category}</h2><ul>#{itemList}</ul></div>"
 
 
+class TodoApp
+  constructor: (el) ->
+    @el = el
+    console.log el
+
+todoEl = document.getElementById "todo-container"
+todoApp = new TodoApp todoEl
+
 chores = new TodoList "chores"
 chores.addItem "clean kitchen"
 chores.addItem "vacuum carpet"
