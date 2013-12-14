@@ -54,7 +54,6 @@ class TodoList
 class TodoApp
   constructor: (el) ->
     @el = el
-    console.log el
 
 todoEl = document.getElementById "todo-container"
 todoApp = new TodoApp todoEl
