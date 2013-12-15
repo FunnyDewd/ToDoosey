@@ -53,15 +53,48 @@ class TodoList
 
 class TodoApp
   constructor: (el) ->
-    @el = el
+    if (typeof el == "object")
+      @el = el
+    else
+      @el = document.querySelector el
+    @todoListCollection = []
+    @init()
+
+  init: () ->
+    theContainer = @el
+    newLink = document.createElement("a")
+    newLink.id = "new-list"
+    newLink.classList.add("button")
+    newLink.href = "#"
+    newLink.innerText = "Add New List"
+    @newListLink = newLink
+    theContainer.appendChild @newListLink
+    addNewTodoList = () ->
+      newListInput = document.createElement "input"
+      newListInput.type = "text"
+      newListInput.id = "new-list-name"
+      newListInput.placeholder = "Enter List Name"
+      if !@todoListCollection
+        theContainer.appendChild newListInput
+      else
+        firstListEl = newLink.nextSibiling()
+        firstListEl.insertBefore newListInput
+      
+
+    newLink.addEventListener "click", () ->
+      addNewTodoList()
+
 
 todoEl = document.getElementById "todo-container"
 todoApp = new TodoApp todoEl
 
+console.log todoApp.el
+
 chores = new TodoList "chores"
 chores.addItem "clean kitchen"
 chores.addItem "vacuum carpet"
-chores.addItem "empty fridge"
+chores.addItem "empty trunk"
+chores.addItem "clean bathroom"
 
-todoUL = document.querySelector ".todos"
-todoUL.innerHTML = chores.toHTML()
+#todoUL = document.querySelector ".todos"
+#todoUL.innerHTML = chores.toHTML()
