@@ -61,6 +61,7 @@ class TodoApp
     @init()
 
   init: () ->
+    todoList = @todoListCollection
     theContainer = @el
     newLink = document.createElement("a")
     newLink.id = "new-list"
@@ -69,18 +70,37 @@ class TodoApp
     newLink.innerText = "Add New List"
     @newListLink = newLink
     theContainer.appendChild @newListLink
+    linkChild = newLink.parentNode.firstChild()
+
+
+
     addNewTodoList = () ->
       newListInput = document.createElement "input"
       newListInput.type = "text"
       newListInput.id = "new-list-name"
       newListInput.placeholder = "Enter List Name"
-      if !@todoListCollection
+      if !todoList.length
         theContainer.appendChild newListInput
       else
-        firstListEl = newLink.nextSibiling()
-        firstListEl.insertBefore newListInput
-      newListInput.addEventListener "keydown", () ->
-      
+        firstListEl = linkChild.nextSibiling()
+        firstListEl.parentNode.insertBefore newListInput, firstListEl
+
+      handleListInput = (event) ->
+        if event.keyCode == 13
+          if this.value != ""
+            listName = this.value
+            newList = new TodoList(listName)
+            todoList.push newList
+            listID = (listName.replace(" ", "-")).toLowerCase()
+            newListContainer = document.createElement "div"
+            newListContainer.id = listID
+            newListContainer.classList.add "list-container"
+            newListInput.parentNode.insertBefore newListContainer, newListInput
+            newListContainer.innerHTML = newList.toHTML()
+            newListInput.removeEventListener "keydown", handleListInput
+            newListInput.parentNode.removeChild newListInput
+
+      newListInput.addEventListener "keydown", handleListInput
 
     newLink.addEventListener "click", () ->
       addNewTodoList()
