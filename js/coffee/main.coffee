@@ -79,6 +79,7 @@ class TodoApp
       else
         firstListEl = newLink.nextSibiling()
         firstListEl.insertBefore newListInput
+      newListInput.addEventListener "keydown", () ->
       
 
     newLink.addEventListener "click", () ->
@@ -90,11 +91,11 @@ todoApp = new TodoApp todoEl
 
 console.log todoApp.el
 
-chores = new TodoList "chores"
-chores.addItem "clean kitchen"
-chores.addItem "vacuum carpet"
-chores.addItem "empty trunk"
-chores.addItem "clean bathroom"
+#chores = new TodoList "chores"
+#chores.addItem "clean kitchen"
+#chores.addItem "vacuum carpet"
+#chores.addItem "empty trunk"
+#chores.addItem "clean bathroom"
 
 #todoUL = document.querySelector ".todos"
 #todoUL.innerHTML = chores.toHTML()
